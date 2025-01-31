@@ -1,11 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { ShoppingCart, ChevronLeft, ChevronRight } from "lucide-react";
 
 function Blazers() {
   const sizes = ["S", "M", "L", "XL", "XXL"];
   const colors = ["red", "blue", "green", "black", "white"];
   const categories = ["All", "Men", "Child"];
+const images = [
+    "https://via.placeholder.com/1000x1000/FF5733/FFFFFF?text=Slide+1",
+    "https://via.placeholder.com/800x400/33FF57/FFFFFF?text=Slide+2",
+    "https://via.placeholder.com/800x400/3357FF/FFFFFF?text=Slide+3",
+  ];
 
-  // Sample card data with size, color, and category
+  const [index, setIndex] = useState(0);
+
+  const prevSlide = () => {
+    setIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const nextSlide = () => {
+    setIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
   const cards = [
     {
       title: "Classic Blazer",
@@ -61,12 +75,12 @@ function Blazers() {
     },
   ];
 
-  // Default state for filters (to show all items initially)
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
-  // Filter the cards based on selected size, color, and category
   const filteredCards = cards.filter((card) => {
     const isSizeMatch = selectedSize ? card.size === selectedSize : true;
     const isColorMatch = selectedColor ? card.color === selectedColor : true;
@@ -75,13 +89,62 @@ function Blazers() {
     return isSizeMatch && isColorMatch && isCategoryMatch;
   });
 
+  const openModal = (product) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedProduct(null);
+  };
+
+  const product = {
+    title: "Premium Organic T-Shirt",
+    image: "image1.jpg",
+    image2: "image2.jpg",
+    image3: "image3.jpg",
+    price: "$29.99",
+  };
+
   return (
+     <div>
+          <div className="relative w-full h-[400px] mb-6 lg:mb-0 ">
+            <div className="relative w-full h-full overflow-hidden rounded-lg">
+              <div
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${index * 100}%)` }}
+              >
+                {images.map((image, i) => (
+                  <div key={i} className="flex-shrink-0 w-full">
+                    <img
+                      src={image}
+                      alt={`Slide ${i + 1}`}
+                      className="object-cover w-full h-full rounded-lg"
+                    />
+                  </div>
+                ))}
+              </div>
+    
+              {/* Slider Controls */}
+              <button
+                onClick={prevSlide}
+                className="absolute p-2 text-white transform -translate-y-1/2 bg-black bg-opacity-50 rounded-full top-1/2 left-4 hover:bg-opacity-80"
+              >
+                <ChevronLeft size={24} />
+              </button>
+              <button
+                onClick={nextSlide}
+                className="absolute p-2 text-white transform -translate-y-1/2 bg-black bg-opacity-50 rounded-full top-1/2 right-4 hover:bg-opacity-80"
+              >
+                <ChevronRight size={24} />
+              </button>
+            </div>
+          </div>
     <div className="flex flex-col min-h-screen p-6 bg-gray-100 lg:flex-row">
       {/* Sidebar */}
       <aside className="w-full h-full p-6 bg-white rounded-lg shadow-md lg:w-64">
         <h2 className="text-2xl font-bold text-gray-800">Filters</h2>
-
-        {/* Category Filter */}
         <div className="mt-6">
           <h3 className="text-lg font-semibold text-gray-700">Category</h3>
           <div className="flex flex-wrap gap-3 mt-3">
@@ -100,8 +163,6 @@ function Blazers() {
             ))}
           </div>
         </div>
-
-        {/* Size Filter */}
         <div className="mt-6">
           <h3 className="text-lg font-semibold text-gray-700">Size</h3>
           <div className="flex flex-wrap gap-3 mt-3">
@@ -122,8 +183,6 @@ function Blazers() {
             ))}
           </div>
         </div>
-
-        {/* Color Filter */}
         <div className="mt-6">
           <h3 className="text-lg font-semibold text-gray-700">Color</h3>
           <div className="flex flex-wrap gap-3 mt-3">
@@ -143,15 +202,13 @@ function Blazers() {
             ))}
           </div>
         </div>
-
-        {/* Clear Filters Button */}
         <div className="mt-6">
           <button
             className="w-full py-2 text-white bg-gray-500 rounded-md hover:bg-gray-700"
             onClick={() => {
               setSelectedSize(null);
               setSelectedColor(null);
-              setSelectedCategory("All"); // Reset to "All" category
+              setSelectedCategory("All");
             }}
           >
             Clear Filters
@@ -165,23 +222,24 @@ function Blazers() {
           {filteredCards.length > 0 ? (
             filteredCards.map((card, index) => (
               <div key={index} className="w-full p-6 rounded-lg">
-                <div className="overflow-hidden transition-transform duration-300 transform bg-white rounded-lg shadow-xl hover:scale-105">
+                <div
+                  className="overflow-hidden transition-transform duration-300 transform bg-white rounded-lg shadow-xl cursor-pointer hover:scale-105"
+                  onClick={() => openModal(card)}
+                >
                   <img
                     src={card.image}
                     alt={card.title}
                     className="object-cover w-full rounded-md h-72 sm:h-80 md:h-96"
                   />
                 </div>
-                {/* Title and Price beneath each card */}
                 <div className="mt-4 text-center">
-  <h3 className="text-lg font-semibold text-blue-800 transition duration-300 transform sm:text-xl hover:text-blue-600">
-    {card.title}
-  </h3>
-  <p className="text-sm text-green-600 sm:text-base">
-    {card.price}
-  </p>
-</div>
-
+                  <h3 className="text-lg font-semibold text-blue-800 transition duration-300 transform sm:text-xl hover:text-blue-600">
+                    {card.title}
+                  </h3>
+                  <p className="text-sm text-green-600 sm:text-base">
+                    {card.price}
+                  </p>
+                </div>
               </div>
             ))
           ) : (
@@ -190,6 +248,80 @@ function Blazers() {
             </p>
           )}
         </div>
+      </div>
+
+      {/* Modal - Display Product Card */}
+      {isModalOpen && selectedProduct && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
+          <div className="relative w-full max-w-3xl p-8 bg-white rounded-lg shadow-xl">
+            <button
+              onClick={closeModal}
+              className="absolute text-gray-600 top-4 right-4 hover:text-gray-800"
+            >
+              ✕
+            </button>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+              {/* Product Image Section */}
+              <div className="relative w-full">
+                <img
+                  src={selectedProduct.image}
+                  alt={selectedProduct.title}
+                  className="object-cover w-full h-full rounded-lg"
+                />
+
+                {/* Image Carousel Controls */}
+                <div className="absolute flex gap-3 transform -translate-x-1/2 bottom-4 left-1/2">
+                  <button className="p-2 bg-gray-200 rounded-full hover:bg-gray-300">
+                    <ChevronLeft size={16} />
+                  </button>
+                  <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                  <button className="p-2 bg-gray-200 rounded-full hover:bg-gray-300">
+                    <ChevronRight size={16} />
+                  </button>
+                </div>
+              </div>
+
+              {/* Product Details */}
+              <div className="flex flex-col">
+                <h2 className="text-3xl font-bold text-gray-800">
+                  {selectedProduct.title}
+                </h2>
+                <p className="mt-1 text-sm text-gray-500">
+                  Soft & comfortable everyday wear
+                </p>
+
+                <p className="mt-4 text-sm leading-relaxed text-gray-700">
+                  Made from **100% organic cotton**, this premium T-shirt offers
+                  **superior comfort** and a **modern fit**. Perfect for casual
+                  outings or layering under a jacket.
+                </p>
+
+                {/* Price */}
+                <p className="mt-4 text-3xl font-bold text-green-500">
+                  {selectedProduct.price}
+                </p>
+                <p className="text-sm text-gray-500">
+                  Free shipping on orders over $50
+                </p>
+
+                {/* Quantity & Add to Cart */}
+                <div className="flex items-center gap-4 mt-6">
+                  <input
+                    type="number"
+                    min="1"
+                    defaultValue="1"
+                    className="w-16 p-3 text-center border border-gray-300 rounded-lg shadow-sm"
+                  />
+                  <button className="flex items-center gap-2 px-6 py-3 font-medium text-white bg-teal-600 rounded-lg shadow-md hover:bg-teal-700">
+                    <ShoppingCart size={20} />
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       </div>
     </div>
   );

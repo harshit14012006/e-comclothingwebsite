@@ -8,6 +8,9 @@ module.exports = {
       animation: {
         fadeInLeft: 'fadeInLeft 1s ease-in-out',
       },
+      fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
+      },
       keyframes: {
         fadeInLeft: {
           '0%': { opacity: '0', transform: 'translateX(-100%)' },

@@ -278,6 +278,35 @@ const HeroSection = () => {
           </div>
         </div>
       </section>
+      {/* CTA Section */}
+      <section className="relative w-full px-6 py-20 text-white bg-gradient-to-r from-blue-500 to-teal-500">
+      {/* Background image (Optional) */}
+      <div className="absolute inset-0 -z-10">
+        <img
+          src="https://via.placeholder.com/1600x600/000000/FFFFFF?text=Big+Sale"
+          alt="Background Image"
+          className="object-cover w-full h-full opacity-30"
+        />
+      </div>
+
+      <div className="relative z-10 text-center">
+        <h2 className="mb-4 text-4xl font-bold sm:text-5xl lg:text-6xl">
+          Big Sale - Up to 50% Off!
+        </h2>
+        <p className="mb-6 text-lg sm:text-xl">
+          Don't miss out on amazing deals for your favorite products.
+          Grab them before they're gone!
+        </p>
+
+        {/* CTA Button */}
+        <a
+          href="/shop-now"
+          className="inline-block px-8 py-4 text-xl font-semibold text-gray-800 transition-all bg-yellow-400 rounded-lg hover:bg-yellow-500 hover:text-white"
+        >
+          Shop Now
+        </a>
+      </div>
+    </section>
     </div>
   );
 };
