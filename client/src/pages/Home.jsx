@@ -3,15 +3,6 @@ import { ReactTyped } from "react-typed";
 import heroImage from "../images/heroImage.jpg";
 
 const HeroSection = () => {
-  const categories = [
-    { name: "T-Shirts", img: "https://via.placeholder.com/150" },
-    { name: "Shirts", img: "https://via.placeholder.com/150" },
-    { name: "Hoodies", img: "https://via.placeholder.com/150" },
-    { name: "Sweaters", img: "https://via.placeholder.com/150" },
-    { name: "Jackets", img: "https://via.placeholder.com/150" },
-    { name: "Blazers", img: "https://via.placeholder.com/150" },
-  ];
-
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
@@ -92,7 +83,16 @@ const HeroSection = () => {
       image: "https://via.placeholder.com/150/ffffff/000000?text=Winter+Coat",
     },
   ];
-l
+
+  const categoriesShowcase = [
+    { name: "T-Shirts", image: "/images/tshirt.jpg" },
+    { name: "Shirts", image: "/images/shirt.jpg" },
+    { name: "Hoodies", image: "/images/hoodie.jpg" },
+    { name: "Sweaters", image: "/images/sweater.jpg" },
+    { name: "Jackets", image: "/images/jacket.jpg" },
+    { name: "Blazers", image: "/images/blazer.jpg" },
+  ];
+
   return (
     <div>
       {/* Hero Section */}
@@ -139,16 +139,24 @@ l
           {/* Call-to-Action Button */}
           <a
             href="/shop"
-            className="inline-block px-12 py-4 text-xl font-semibold text-white transition-all duration-300 transform rounded-full shadow-xl bg-gradient-to-r from-indigo-600 to-pink-500 hover:scale-105 hover:shadow-2xl"
+            className="inline-block px-12 py-4 text-xl font-semibold text-white transition-all duration-300 bg-teal-600 rounded-full shadow-md hover:bg-teal-700 hover:shadow-lg"
           >
             Shop Now
           </a>
         </div>
       </section>
+
       {/* Ui to show sample clothes */}
       <div className="relative w-full px-4 py-8 mx-auto overflow-hidden max-w-7xl sm:px-6 lg:px-8">
+        {/* Tagline with color change */}
+        <div className="mb-8 text-center">
+          <h2 className="text-3xl font-extrabold text-indigo-600 sm:text-4xl">
+            Style That Speaks – Find Your Perfect Look Today!
+          </h2>
+        </div>
+
         <div
-          className="flex transition-transform duration-500"
+          className="flex transition-transform duration-700 ease-in-out"
           style={{
             transform: `translateX(-${(currentIndex / cards.length) * 100}%)`,
           }}
@@ -158,7 +166,7 @@ l
               key={index}
               className="flex-shrink-0 w-full px-2 py-6 text-center sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5"
             >
-              <div className="overflow-hidden bg-white rounded-lg shadow-lg">
+              <div className="overflow-hidden transition-transform duration-300 transform bg-white rounded-lg shadow-xl hover:scale-105">
                 <img
                   src={card.image}
                   alt={card.title}
@@ -167,7 +175,7 @@ l
               </div>
               {/* Title and Price beneath each card */}
               <div className="mt-4">
-                <h3 className="text-base font-semibold text-gray-800 sm:text-lg">
+                <h3 className="text-lg font-semibold text-gray-800 sm:text-xl">
                   {card.title}
                 </h3>
                 <p className="text-sm text-gray-600 sm:text-base">
@@ -181,18 +189,84 @@ l
         {/* Navigation Buttons */}
         <button
           onClick={handlePrev}
-          className="absolute z-10 flex items-center justify-center w-8 h-8 text-white transform -translate-y-1/2 bg-gray-700 rounded-full left-2 sm:left-4 top-1/2 sm:w-10 sm:h-10 hover:bg-gray-600"
+          className="absolute z-10 flex items-center justify-center w-10 h-10 text-white transition-colors duration-200 transform -translate-y-1/2 bg-gray-700 rounded-full left-4 sm:left-6 top-1/2 sm:w-12 sm:h-12 hover:bg-gray-600"
         >
           ❮
         </button>
 
         <button
           onClick={handleNext}
-          className="absolute z-10 flex items-center justify-center w-8 h-8 text-white transform -translate-y-1/2 bg-gray-700 rounded-full right-2 sm:right-4 top-1/2 sm:w-10 sm:h-10 hover:bg-gray-600"
+          className="absolute z-10 flex items-center justify-center w-10 h-10 text-white transition-colors duration-200 transform -translate-y-1/2 bg-gray-700 rounded-full right-4 sm:right-6 top-1/2 sm:w-12 sm:h-12 hover:bg-gray-600"
         >
           ❯
         </button>
       </div>
+
+      {/* Marquee Section for showcase */}
+      <div>
+      <div className="py-6 text-white bg-teal-800">
+        <div className="overflow-hidden">
+          <div className="flex items-center justify-center space-x-12 whitespace-nowrap animate-marquee">
+            <div className="px-4 py-2 text-lg font-semibold transition-all duration-300 rounded-lg hover:bg-gray-700">🎽 Stylish T-Shirts - Perfect for Every Occasion!</div>
+            <div className="px-4 py-2 text-lg font-semibold transition-all duration-300 rounded-lg hover:bg-gray-700">👕 Elegant Shirts - Formal and Casual Styles!</div>
+            <div className="px-4 py-2 text-lg font-semibold transition-all duration-300 rounded-lg hover:bg-gray-700">🧥 Cozy Hoodies - Stay Warm in Style!</div>
+            <div className="px-4 py-2 text-lg font-semibold transition-all duration-300 rounded-lg hover:bg-gray-700">🧣 Comfortable Sweaters - Ideal for Chilly Days!</div>
+            <div className="px-4 py-2 text-lg font-semibold transition-all duration-300 rounded-lg hover:bg-gray-700">🧥 Trendy Jackets - A Must-Have for Your Wardrobe!</div>
+            <div className="px-4 py-2 text-lg font-semibold transition-all duration-300 rounded-lg hover:bg-gray-700">👔 Sharp Blazers - Add a Touch of Class to Your Look!</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Adding the custom Tailwind CSS animation */}
+      <style jsx>{`
+        @keyframes marquee {
+          0% {
+            transform: translateX(-100%);
+          }
+          100% {
+            transform: translateX(100%);
+          }
+        }
+
+        .animate-marquee {
+          animation: marquee 25s linear infinite;
+        }
+      `}</style>
+    </div>
+
+      {/* Shop by Category Section */}
+      <section className="py-12 bg-gray-50">
+        <div className="container px-6 mx-auto">
+          <h2 className="mb-10 text-4xl font-extrabold text-center text-indigo-600">
+            Shop by Category
+          </h2>
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {categoriesShowcase.map((category, index) => (
+              <div
+                key={index}
+                className="relative overflow-hidden transition-transform duration-300 shadow-lg rounded-xl group hover:scale-105"
+              >
+                <img
+                  src={category.image}
+                  alt={category.name}
+                  className="object-cover w-full h-64 transition-transform duration-300 ease-in-out transform group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 transition-opacity duration-300 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-80 group-hover:opacity-100"></div>
+                <div className="absolute inset-0 flex flex-col items-center justify-end p-5 text-center transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+                  <h3 className="mb-3 text-2xl font-semibold text-white">
+                    {category.name}
+                  </h3>
+                  <button className="px-5 py-2 text-sm font-medium text-white transition-all duration-300 bg-teal-600 rounded-lg shadow-md hover:bg-teal-700 hover:shadow-lg">
+                    Explore
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
     </div>
   );
 };

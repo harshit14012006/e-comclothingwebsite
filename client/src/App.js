@@ -1,11 +1,11 @@
 import React from 'react'
-import Sidebar from './admin/Sidebar';
-import Layout from './Layout'
+import RoutingUser from './RoutingUser'
+import RoutingAdmin from './RoutingAdmin';
  function App() {
    return (
      <div>
-       {/* <Sidebar/> */}
-       <Layout/>
+       <RoutingUser/>
+       {/* <RoutingAdmin/> */}
      </div>
    )
  }

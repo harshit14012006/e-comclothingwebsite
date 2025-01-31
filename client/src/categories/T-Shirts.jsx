@@ -2,8 +2,8 @@ import React from 'react'
 
 function TShirts() {
   return (
-    <div>T-Shirts</div>
+    <div>TShirts</div>
   )
 }
 
-export default TShirts
+export default TShirts;

@@ -10,7 +10,7 @@ import Jackets from "./categories/Jackets";
 import Sweaters from "./categories/Sweaters";
 import Blazers from "./categories/Blazers";
 
-function Layout() {
+function RoutingUser() {
   return (
     <div>
       {/* Set Navbar to fixed and give content padding to avoid overlapping */}
@@ -18,12 +18,12 @@ function Layout() {
       <div> {/* Adjust padding as per your navbar height */}
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/services" element={<TShirts />} />
-          <Route path="/about" element={<Shirts />} />
-          <Route path="/contact" element={<Hoodies />} />
-          <Route path="/contact" element={<Sweaters />} />
-          <Route path="/contact" element={<Jackets />} />
-          <Route path="/contact" element={<Blazers />} />
+          <Route path="/t-shirts" element={<TShirts />} />
+          <Route path="/shirts" element={<Shirts />} />
+          <Route path="/hoodies" element={<Hoodies />} />
+          <Route path="/sweaters" element={<Sweaters />} />
+          <Route path="/jackets" element={<Jackets />} />
+          <Route path="/blazers" element={<Blazers />} />
           {/* Add more routes as needed */}
         </Routes>
       </div>
@@ -32,4 +32,4 @@ function Layout() {
   );
 }
 
-export default Layout;
+export default RoutingUser;
