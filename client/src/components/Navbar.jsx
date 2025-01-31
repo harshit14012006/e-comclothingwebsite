@@ -19,12 +19,12 @@ const Navbar = () => {
   return (
     <nav className="bg-white shadow-md">
       {/* Top Section: Logo, Search, and Icons */}
-      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="container flex items-center justify-between px-6 py-4 mx-auto">
         {/* Logo */}
         <div className="flex items-center space-x-2">
           <Link to="/">
             <span
-              className="text-3xl font-bold text-blue-800 tracking-wider hover:text-blue-600 transition duration-300 transform hover:scale-105"
+              className="text-3xl font-bold tracking-wider text-blue-800 transition duration-300 transform hover:text-blue-600 hover:scale-105"
               style={{ fontFamily: '"Italian Plate No2 Expanded", sans-serif' }}
             >
               <i>TRENDY APPAREL</i>
@@ -33,17 +33,17 @@ const Navbar = () => {
         </div>
 
         {/* Search Bar (Hidden on Small Screens) */}
-        <div className="hidden md:flex flex-grow mx-8">
+        <div className="flex-grow hidden mx-8 md:flex">
           <div className="relative w-full">
             <input
               type="text"
               placeholder="Search for products"
-              className="w-full border border-gray-300 rounded-lg py-2 px-4 pl-10 placeholder-gray-500 text-sm focus:outline-none focus:border-blue-800 transition duration-200"
+              className="w-full px-4 py-2 pl-10 text-sm placeholder-gray-500 transition duration-200 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-800"
             />
-            <span className="absolute left-3 top-2 text-gray-500">
+            <span className="absolute text-gray-500 left-3 top-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="w-5 h-5"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -61,21 +61,21 @@ const Navbar = () => {
         <div className="flex items-center space-x-6 text-gray-600">
           <Link
             to="#"
-            className="hover:text-blue-800 transition duration-200 transform hover:scale-110"
+            className="transition duration-200 transform hover:text-blue-800 hover:scale-110"
           >
-            <FontAwesomeIcon icon={faUser} className="h-6 w-6" />
+            <FontAwesomeIcon icon={faUser} className="w-6 h-6" />
           </Link>
           <Link
             to="#"
-            className="hover:text-blue-800 transition duration-200 transform hover:scale-110"
+            className="transition duration-200 transform hover:text-blue-800 hover:scale-110"
           >
-            <FontAwesomeIcon icon={faHeart} className="h-6 w-6" />
+            <FontAwesomeIcon icon={faHeart} className="w-6 h-6" />
           </Link>
           <Link
             to="#"
-            className="hover:text-blue-800 transition duration-200 transform hover:scale-110"
+            className="transition duration-200 transform hover:text-blue-800 hover:scale-110"
           >
-            <FontAwesomeIcon icon={faShoppingCart} className="h-6 w-6" />
+            <FontAwesomeIcon icon={faShoppingCart} className="w-6 h-6" />
           </Link>
           {/* Hamburger Menu Icon (Visible on Small Screens) */}
           <button
@@ -84,7 +84,7 @@ const Navbar = () => {
           >
             <FontAwesomeIcon
               icon={isMenuOpen ? faTimes : faBars}
-              className="h-6 w-6"
+              className="w-6 h-6"
             />
           </button>
         </div>
@@ -96,46 +96,46 @@ const Navbar = () => {
           isMenuOpen ? "block" : "hidden"
         } md:block`}
       >
-        <div className="container mx-auto px-6 py-4">
-          <div className="links flex flex-wrap justify-center gap-6 text-gray-700 font-medium text-base">
+        <div className="container px-6 py-4 mx-auto">
+          <div className="flex flex-wrap justify-center gap-6 text-base font-medium text-gray-700 links">
             <Link
               to="/t-shirts"
-              className="relative group transition duration-200 hover:text-blue-800"
+              className="relative transition duration-200 group hover:text-blue-800"
             >
               T-Shirts
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-800 transition-all duration-300 group-hover:w-full"></span>
             </Link>
             <Link
               to="/shirts"
-              className="relative group transition duration-200 hover:text-blue-800"
+              className="relative transition duration-200 group hover:text-blue-800"
             >
               Shirts
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-800 transition-all duration-300 group-hover:w-full"></span>
             </Link>
             <Link
               to="/hoodies"
-              className="relative group transition duration-200 hover:text-blue-800"
+              className="relative transition duration-200 group hover:text-blue-800"
             >
               Hoodies
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-800 transition-all duration-300 group-hover:w-full"></span>
             </Link>
             <Link
               to="/sweaters"
-              className="relative group transition duration-200 hover:text-blue-800"
+              className="relative transition duration-200 group hover:text-blue-800"
             >
               Sweaters
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-800 transition-all duration-300 group-hover:w-full"></span>
             </Link>
             <Link
               to="/jackets"
-              className="relative group transition duration-200 hover:text-blue-800"
+              className="relative transition duration-200 group hover:text-blue-800"
             >
               Jackets
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-800 transition-all duration-300 group-hover:w-full"></span>
             </Link>
             <Link
               to="/blazers"
-              className="relative group text-red-500 hover:text-red-700 transition duration-200"
+              className="relative text-red-500 transition duration-200 group hover:text-red-700"
             >
               Blazers
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-700 transition-all duration-300 group-hover:w-full"></span>

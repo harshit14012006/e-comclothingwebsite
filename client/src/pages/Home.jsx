@@ -204,35 +204,47 @@ const HeroSection = () => {
 
       {/* Marquee Section for showcase */}
       <div>
-      <div className="py-6 text-white bg-teal-800">
-        <div className="overflow-hidden">
-          <div className="flex items-center justify-center space-x-12 whitespace-nowrap animate-marquee">
-            <div className="px-4 py-2 text-lg font-semibold transition-all duration-300 rounded-lg hover:bg-gray-700">🎽 Stylish T-Shirts - Perfect for Every Occasion!</div>
-            <div className="px-4 py-2 text-lg font-semibold transition-all duration-300 rounded-lg hover:bg-gray-700">👕 Elegant Shirts - Formal and Casual Styles!</div>
-            <div className="px-4 py-2 text-lg font-semibold transition-all duration-300 rounded-lg hover:bg-gray-700">🧥 Cozy Hoodies - Stay Warm in Style!</div>
-            <div className="px-4 py-2 text-lg font-semibold transition-all duration-300 rounded-lg hover:bg-gray-700">🧣 Comfortable Sweaters - Ideal for Chilly Days!</div>
-            <div className="px-4 py-2 text-lg font-semibold transition-all duration-300 rounded-lg hover:bg-gray-700">🧥 Trendy Jackets - A Must-Have for Your Wardrobe!</div>
-            <div className="px-4 py-2 text-lg font-semibold transition-all duration-300 rounded-lg hover:bg-gray-700">👔 Sharp Blazers - Add a Touch of Class to Your Look!</div>
+        <div className="py-6 text-white bg-teal-800">
+          <div className="overflow-hidden">
+            <div className="flex items-center justify-center space-x-12 whitespace-nowrap animate-marquee">
+              <div className="px-4 py-2 text-lg font-semibold transition-all duration-300 rounded-lg hover:bg-gray-700">
+                🎽 Stylish T-Shirts - Perfect for Every Occasion!
+              </div>
+              <div className="px-4 py-2 text-lg font-semibold transition-all duration-300 rounded-lg hover:bg-gray-700">
+                👕 Elegant Shirts - Formal and Casual Styles!
+              </div>
+              <div className="px-4 py-2 text-lg font-semibold transition-all duration-300 rounded-lg hover:bg-gray-700">
+                🧥 Cozy Hoodies - Stay Warm in Style!
+              </div>
+              <div className="px-4 py-2 text-lg font-semibold transition-all duration-300 rounded-lg hover:bg-gray-700">
+                🧣 Comfortable Sweaters - Ideal for Chilly Days!
+              </div>
+              <div className="px-4 py-2 text-lg font-semibold transition-all duration-300 rounded-lg hover:bg-gray-700">
+                🧥 Trendy Jackets - A Must-Have for Your Wardrobe!
+              </div>
+              <div className="px-4 py-2 text-lg font-semibold transition-all duration-300 rounded-lg hover:bg-gray-700">
+                👔 Sharp Blazers - Add a Touch of Class to Your Look!
+              </div>
+            </div>
           </div>
         </div>
+
+        {/* Adding the custom Tailwind CSS animation */}
+        <style jsx>{`
+          @keyframes marquee {
+            0% {
+              transform: translateX(-100%);
+            }
+            100% {
+              transform: translateX(100%);
+            }
+          }
+
+          .animate-marquee {
+            animation: marquee 25s linear infinite;
+          }
+        `}</style>
       </div>
-
-      {/* Adding the custom Tailwind CSS animation */}
-      <style jsx>{`
-        @keyframes marquee {
-          0% {
-            transform: translateX(-100%);
-          }
-          100% {
-            transform: translateX(100%);
-          }
-        }
-
-        .animate-marquee {
-          animation: marquee 25s linear infinite;
-        }
-      `}</style>
-    </div>
 
       {/* Shop by Category Section */}
       <section className="py-12 bg-gray-50">
@@ -266,7 +278,6 @@ const HeroSection = () => {
           </div>
         </div>
       </section>
-      
     </div>
   );
 };
