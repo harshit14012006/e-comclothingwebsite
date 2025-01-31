@@ -72,7 +72,7 @@ const Navbar = () => {
             <FontAwesomeIcon icon={faHeart} className="w-6 h-6" />
           </Link>
           <Link
-            to="#"
+            to="/user-cart"
             className="transition duration-200 transform hover:text-blue-800 hover:scale-110"
           >
             <FontAwesomeIcon icon={faShoppingCart} className="w-6 h-6" />

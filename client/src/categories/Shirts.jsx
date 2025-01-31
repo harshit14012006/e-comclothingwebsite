@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import { ShoppingCart, ChevronLeft, ChevronRight } from "lucide-react";
 
 function Shirts() {
+  const [cart, setCart] = useState([]);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const addToCart = (product) => {
+    setCart([...cart, product]);
+  };
   const sizes = ["S", "M", "L", "XL", "XXL"];
   const colors = ["red", "blue", "green", "black", "white"];
   const categories = ["All", "Men", "Child"];

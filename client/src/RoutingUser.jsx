@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import { Routes, Route } from "react-router-dom";
+import AddToCart from './pages/AddToCart'
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import TShirts from "./categories/T-Shirts";
@@ -18,6 +19,7 @@ function RoutingUser() {
       <div> {/* Adjust padding as per your navbar height */}
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/user-cart" element={<AddToCart />} />
           <Route path="/t-shirts" element={<TShirts />} />
           <Route path="/shirts" element={<Shirts />} />
           <Route path="/hoodies" element={<Hoodies />} />
